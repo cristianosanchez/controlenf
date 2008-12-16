@@ -1,0 +1,93 @@
+<div class="box">
+    <h2>Detalhes</h2>
+    <div class="boxContent">
+        <table>
+            <tr class=rowA>
+                <td>Numero</td>
+                <td><%=h @nota.numero %></td>
+            </tr>
+
+            <tr class=rowB>
+                <td>Data Emissao</td>
+                <td><%=h @nota.emissao %></td>
+            </tr>
+
+            <tr class=rowA>
+                <td>Empresa</td>
+                <td>
+                    <% if @nota.empresa %>
+                        <%=h @nota.empresa.nome %>
+                    <% end %>&nbsp;
+                </td>
+            </tr>
+
+            <tr class=rowB>
+                <td>Valor</td>
+                <td><%=h number_to_currency(@nota.valor) %></td>
+            </tr>
+
+            <tr class=rowA>
+                <td>Emissor</td>
+                <td>
+                    <% if @nota.usuario %>
+                        <%=h @nota.usuario.nome %>
+                    <% end %>&nbsp;
+                </td>
+            </tr>
+
+            <tr class=rowB>
+                <td>IRRF (Imposto de Renda Retido na Fonte)</td>
+                <td><%=h number_to_currency(@nota.irrf) %></td>
+            </tr>
+
+            <tr class=rowA>
+                <td>ISSQN (Imposto Sobre Serviço)</td>
+                <td><%=h number_to_currency(@nota.issqn) %></td>
+            </tr>
+
+            <tr class=rowB>
+                <td>PIS</td>
+                <td><%=h number_to_currency(@nota.pis) %></td>
+            </tr>
+
+            <tr class=rowA>
+                <td>COFINS</td>
+                <td><%=h number_to_currency(@nota.cofins) %></td>
+            </tr>
+
+            <tr class=rowB>
+                <td>CSSL (Contribuição Social Sobre o Lucro) </td>
+                <td>
+                    <%=h number_to_currency(@nota.cssl) %>
+                    <% if @nota.desc_fonte? %><%= h "DESC FONTE" %><% end %>
+                </td>
+            </tr>
+
+            <tr class=rowA>
+                <td>IRPJ (Imposto de Renda Pessoa Jurídica) </td>
+                <td>
+                    <%=h number_to_currency(@nota.irpj) %>
+                    <% if @nota.desc_fonte? %><%= h "DESC FONTE" %><% end %>
+                </td>
+            </tr>
+
+            <tr class=rowB>
+                <td>Total Impostos </td>
+                <td><%=h number_to_currency(@nota.total_impostos) %> <%= "(#{@nota.porcentagem_impostos})" %></td>
+            </tr>
+
+            <tr class=rowA>
+                <td>Total Líquido</td>
+                <td><%=h number_to_currency(@nota.total) %></td>
+            </tr>
+
+            <tr class=rowB>
+                <td >Comando</td>
+                <td><%= link_to 'Editar', edit_nota_path(@nota) %>
+                    <%= link_to 'Excluir', @nota, :confirm => "Confirma excluir a NF de numero #{@nota.numero}?", :method => :delete %>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

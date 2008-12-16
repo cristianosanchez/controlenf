@@ -1,0 +1,43 @@
+<div class="box">
+    <h2>Alterando Nota Fiscal</h2>
+    <div class="boxContent">
+
+    <%= error_messages_for :nota %>
+
+    <% form_for(@nota) do |f| %>
+      <p>
+        <b>Numero</b><br/>
+        <%= f.text_field :numero %>
+      </p>
+
+      <p>
+        <b>Valor</b><br/>
+        <%= f.text_field :valor %>
+      </p>
+
+      <p>
+        <b>Data de Emissão</b><br/>
+        <%= f.date_select :emissao %>
+      </p>
+
+      <p>
+        <b>Cancelada</b><br/>
+        <%= f.check_box :cancelada %>
+      </p>
+
+      <p>
+        <b>Empresa</b><br/>
+        <%= f.select :empresa_id, Empresa.find(:all).collect {|e| [ e.nome, e.id ] }, { :include_blank => true } %>
+      </p>
+
+      <p>
+        <b>Emissor</b><br/>
+        <%= f.select :usuario_id, Usuario.find(:all).collect {|u| [ u.nome, u.id ] }, { :include_blank => true } %>
+      </p>
+
+      <p><%= f.submit "Update" %></p>
+
+      <p><%= link_to 'Destroy', @nota, :confirm => 'Are you sure?', :method => :delete %></p>
+    <% end %>
+    </div>
+</div>

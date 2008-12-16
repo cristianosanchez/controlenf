@@ -1,0 +1,49 @@
+<div class="box">
+    <h2>Últimos lançamentos</h2>
+    <div class="boxContent">
+        <table>
+            <tr>
+                <th>Num.</th>
+                <th>Data Emissao</th>
+                <th>Empresa</th>
+                <th>Valor</th>
+                <th>Emissor</th>
+                <th>Total Líquido</th>
+                <th>Comando</th>
+            </tr>
+            <% count = 0 %>
+            <% for nota in @notas %>
+                <% if (count+=1) % 2 > 0 %>
+                    <tr class=rowA>
+                <% else %>
+                    <tr class=rowB>
+                <% end %>
+
+                <td><%= link_to nota.numero, :action => 'detalhe', :id => nota.id %></td>
+
+                <td><%=h nota.emissao %></td>
+
+                <td>
+                <% if nota.empresa %>
+                    <%=h nota.empresa.nome %>
+                <% end %>&nbsp;
+                </td>
+
+                <td><%=h number_to_currency(nota.valor) %></td>
+
+                <td>
+                <% if nota.usuario %>
+                    <%=h nota.usuario.nome %>
+                <% end %>&nbsp;
+                </td>
+
+                <td><%=h number_to_currency(nota.total) %></td>
+
+                <td><%= link_to 'Editar', edit_nota_path(nota) %>
+                    <%= link_to 'Excluir', nota, :confirm => "Confirma excluir a NF de numero #{nota.numero}?", :method => :delete %>
+                </td>
+              </tr>
+            <% end %>
+        </table>
+    </div>
+</div>

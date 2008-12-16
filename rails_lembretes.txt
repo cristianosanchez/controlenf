@@ -1,0 +1,20 @@
+:- DEFININDO LAYOUT
+
+1) view/layouts/application.rhtml define um layout global
+2) view/layouts/nome_do_controller.rhtml define um layout pro controller de mesmo nome
+3) dentro do controller definindo o layout literal
+   layout "nome_do_layout"
+4) dentro do controller definindo o layout como simbolo
+   layout :user_layout
+   def user_layout
+      "nome_do_layout"
+   end
+5) dentro da action definindo o layout
+   def index
+      render :layout => "nome_do_layout" # ou false para no-layout
+   end
+
+
+
+
+

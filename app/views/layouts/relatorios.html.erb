@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <%= stylesheet_link_tag 'default', :media => "all" %>
+
+        <script type="text/javascript">
+            function switchMenu(obj, collapse) {
+                var el = document.getElementById(obj);
+                if ( el.style.display != 'none' || collapse == true) {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = '';
+                }
+            }
+
+            function pageLoad() {
+                    switchMenu('busca_avancada', true);
+            }
+
+        </script>
+
+
+    </head>
+    <body onload="javascript:pageLoad()">
+        <div id="outer">
+            <div id="header">
+                <h1><a href="#">Controle de NF</a></h1>
+                <h2>JazzUP</h2>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li class="first"><%= link_to 'Principal', :controller => "notas", :action => "index" %></li>
+                    <li><%= link_to 'Empresas', :controller => "empresas", :action => "index" %></li>
+                    <li><%= link_to 'Usuarios', :controller => "usuarios", :action => "index" %></li>
+                    <li><%= link_to 'Relatório', :controller => "relatorios", :action => "index" %></li>
+                    <li><%= link_to 'Sair', :controller => "login", :action => "logout" %></li>
+                </ul>
+            </div>
+            <div id="content">
+                <div id="primaryContentContainer">
+                    <div id="primaryContent">
+                        <p style="color: green"><%= flash[:notice] %></p>
+                        <div class="box">
+                            <%= yield  %>
+                        </div>
+                    </div>
+                </div>
+                <div id="secondaryContent">
+
+                    <div class="box boxB">
+                        <div class="boxContent">
+
+                            <% form_tag :action => 'mes' do %>
+                                <div>
+                                    <div>Mês <%= select_tag 'qdata', "<option value='2008-12'>2008-12</option><option value='2008-11'>2008-11</option>", { :include_blank => true } %></div>
+                                    <div><input type="submit" class="button" value="Search" /></div>
+                                </div>
+                             <% end %>
+
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <h3>Menu</h3>
+                        <div class="boxContent">
+                            <ul>
+                                <li><%= link_to 'Listar', :action => 'index' %></li>
+                                <li><%= link_to 'Emitir NF', new_nota_path %></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <h3>Fusce dolor tristique</h3>
+                        <div class="boxContent">
+                            <p>Sed eu eros imperdiet eros interdum blandit. Vivamus sagittis bibendum erat. Curabitur malesuada. <a href="#">More&#8230;</a></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="footer">
+                <p>Copyright &copy; 2006 Sitename.com. Designed by <a href="http://www.freecsstemplates.org">Free CSS Templates</a></p>
+            </div>
+        </div>
+    </body>
+</html>

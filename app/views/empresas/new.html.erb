@@ -1,0 +1,82 @@
+<div class="box">
+    <h2>Inclusão de Empresas</h2>
+
+    <div class="boxContent">
+
+        <%= error_messages_for :empresa %>
+
+        <% form_for(@empresa) do |f| %>
+            <p>
+                <b>Nome</b><br/>
+                <%= f.text_field :nome %>
+            </p>
+
+            <p>
+                <b>Razao Social</b><br/>
+                <%= f.text_field :razao_social %>
+            </p>
+
+            <p>
+                <b>Endereço</b><br/>
+                <%= f.text_field :endereco %>
+            </p>
+
+            <p>
+                <b>Contato</b><br/>
+                <%= f.text_field :contato %>
+            </p>
+
+            <p>
+                <b>CNPJ</b><br/>
+                <%= f.text_field :cnpj %>
+            </p>
+
+            <p>
+                <b>CEP</b><br/>
+                <%= f.text_field :cep %>
+            </p>
+
+            <p>
+                <b>Bairro</b><br/>
+                <%= f.text_field :bairro %>
+            </p>
+
+            <p>
+                <b>Estado</b><br/>
+                <%= f.text_field :estado %>
+            </p>
+
+            <p>
+                <b>País</b><br/>
+                <%= f.text_field :pais %>
+            </p>
+
+            <p>
+                <b>Inscrição Estadual</b><br/>
+                <%= f.text_field :insc_estadual %>
+            </p>
+
+            <p>
+                <b>Inscrição Municipal</b><br/>
+                <%= f.text_field :insc_municipal %>
+            </p>
+
+            <p>
+                <b>Observação</b><br/>
+                <%= f.text_field :obs %>
+            </p>
+
+            <p>
+                <b>Emissor</b><br/>
+                <%= f.select :usuario_id, Usuario.find(:all).collect {|u| [ u.nome, u.id ] }, { :include_blank => true } %>
+            </p>
+
+
+
+            <p>
+                <%= f.submit "Create" %>
+            </p>
+        <% end %>
+
+    </div>
+</div>

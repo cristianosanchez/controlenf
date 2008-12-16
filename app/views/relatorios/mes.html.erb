@@ -1,0 +1,65 @@
+<div class="box">
+  <h2>Lançamentos de <%= params['qdata'] %></h2>
+  <div class="boxContent">
+    <table>
+      <tr>
+        <th>Num.</th>
+        <th>Data Emissao</th>
+        <th>Empresa</th>
+        <th>Valor</th>
+        <th>Total Líquido</th>
+      </tr>
+      <% count = 0 %>
+      <% for nota in @notas %>
+        <% if (count+=1) % 2 > 0 %>
+          <tr class=rowA>
+        <% else %>
+          <tr class=rowB>
+          <% end %>
+
+          <td><%=h nota.numero %></td>
+
+          <td><%=h nota.emissao %></td>
+
+          <td>
+            <% if nota.empresa %>
+              <%=h nota.empresa.nome %>
+            <% end %>&nbsp;
+          </td>
+
+          <td><%=h number_to_currency(nota.valor) %></td>
+
+          <td><%=h number_to_currency(nota.total) %></td>
+
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="box">
+<h2>Impostos por Emissor</h2>
+<div class="boxContent">
+  <table>
+  <tr>
+    <th>Emissor</th>
+    <th>PIS</th>
+    <th>COFINS</th>
+    <th>ISSQN</th>
+    <th>CSSL</th>
+    <th>IRPJ</th>
+  </tr>
+  <% @impostos.each_pair do |u, i| %>
+    <tr>
+      <th><%=u.nome%></th>
+      <th><%=i.pis%></th>
+      <th><%=i.cofins%></th>
+      <th><%=i.issqn%></th>
+      <th><%=i.cssl%></th>
+      <th><%=i.irpj%></th>
+    </tr>
+  <% end %>
+</table>
+</div>
+</div>
+

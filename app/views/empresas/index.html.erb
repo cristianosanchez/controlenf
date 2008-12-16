@@ -1,0 +1,25 @@
+<div class="box">
+    <h2>Empresas</h2>
+    <div class="boxContent">
+        <table>
+            <tr>
+                <th>Razao Social</th>
+            </tr>
+            <% count = 0 %>
+            <% for empresa in @empresas %>
+                <% if (count+=1) % 2 > 0 %>
+                    <tr class=rowA>
+                <% else %>
+                    <tr class=rowB>
+                <% end %>
+
+                <td><%=h empresa.razao_social %></td>
+
+                <td><%= link_to 'Editar', edit_empresa_path(empresa) %>
+                    <%= link_to 'Excluir', empresa, :confirm => "Confirma excluir a empresa #{empresa.razao_social}?", :method => :delete %>
+                </td>
+              </tr>
+            <% end %>
+        </table>
+    </div>
+</div>

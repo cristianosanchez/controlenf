@@ -1,0 +1,7 @@
+<% form_tag do %>
+    <div>
+        <span>Usuário:</span><%= text_field_tag :nome, params[:nome] %>
+        <span>Senha:</span><%= password_field_tag :senha, params[:senha] %>
+        <%= submit_tag "Login" %>
+    </div>
+<% end %>

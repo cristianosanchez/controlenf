@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "controlenf", :media => "all" %>
+
+<p>
+  <b>Nome:</b>
+  <%=h @usuario.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @usuario.email %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%=h @usuario.senha %>
+</p>
+
+
+<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
+<%= link_to 'Back', usuarios_path %>
